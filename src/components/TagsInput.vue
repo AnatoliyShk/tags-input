@@ -1,6 +1,13 @@
 <template>
     <div v-for="(tag, index) in tags"> {{ index + " : " + tag }} </div>
-    <input type="text" :value="newTag" v-on:keydown.enter="tags.push($event.target.value)" />
+    <hr/>
+    {{ newTag }}
+    <input
+        type="text"
+        v-model.trim="newTag"
+        @keydown.enter="tags.push($event.target.value)"
+        @keydown.tab.prevent="tags.push($event.target.value)"
+    />
 </template>
 
 <script>
